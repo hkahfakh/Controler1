@@ -49,11 +49,11 @@ public class GalleryFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         super.onCreate(savedInstanceState);
-
+        context = getActivity();
         bindID(root);
         bindListener();
         bindReceiver();
-           Ini();
+        Ini();
 
         return root;
     }

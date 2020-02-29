@@ -2,6 +2,7 @@ package com.example.controler1.ui.gallery;
 
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.DataInput;
@@ -21,8 +22,8 @@ import java.net.Socket;
 
 public class TcpClient implements Runnable{
     private String TAG = "TcpClient";
-    private String  serverIP = "192.168.88.141";
-    private int serverPort = 1234;
+    private String  serverIP = "192.168.1.137";
+    private int serverPort = 22;
     private PrintWriter pw;
     private InputStream is;
     private DataInputStream dis;
@@ -67,7 +68,10 @@ public class TcpClient implements Runnable{
                 Intent intent =new Intent();
                 intent.setAction("tcpClientReceiver");
                 intent.putExtra("tcpClientReceiver",rcvMsg);
+
+
                 GalleryFragment.context.sendBroadcast(intent);//将消息发送给主界面
+
                 if (rcvMsg.equals("QuitClient")){   //服务器要求客户端结束
                     isRun = false;
                 }
